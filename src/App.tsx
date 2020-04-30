@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./theme/theme";
+import { useDarkMode } from "./hooks/useDarkMode";
+import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
+import { GlobalStyle } from "./theme/theme";
 
 function App() {
+  const [theme, toggleTheme, componentMounted] = useDarkMode();
+
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
+
+  if (!componentMounted) {
+    return <div />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyle />
+      <div>
+        <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+      </div>
+    </ThemeProvider>
   );
 }
 
