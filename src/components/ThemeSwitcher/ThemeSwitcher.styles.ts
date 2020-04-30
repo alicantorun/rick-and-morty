@@ -22,7 +22,7 @@ export const ToggleContainer = styled.button<ToggleContainerProps>`
   svg {
     height: auto;
     width: 2.5rem;
-    transition: all 0.3s linear;
+    transition: all 0.35s linear;
 
     // sun icon
     &:first-child {

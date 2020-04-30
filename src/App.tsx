@@ -1,26 +1,33 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "./theme/theme";
-import { useDarkMode } from "./hooks/useDarkMode";
+// import { ThemeProvider } from "styled-components";
+// import { darkTheme, lightTheme } from "./theme/theme";
+// import { useDarkMode } from "./hooks/useDarkMode";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
-import { GlobalStyle } from "./theme/theme";
+// import { GlobalStyle } from "./theme/theme";
+import ThemeProvider from "./ThemeProvider";
 
 function App() {
-  const [theme, toggleTheme, componentMounted] = useDarkMode();
+  // const [theme, toggleTheme, componentMounted] = useDarkMode();
 
-  const themeMode = theme === "light" ? lightTheme : darkTheme;
+  // const themeMode = theme === "light" ? lightTheme : darkTheme;
 
-  if (!componentMounted) {
-    return <div />;
-  }
+  // if (!componentMounted) {
+  //   return <div />;
+  // }
 
+  console.log("render");
   return (
-    <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
+    // <ThemeProvider theme={themeMode}>
+    //   <GlobalStyle />
+    <ThemeProvider>
       <div>
-        <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+        <ThemeSwitcher
+        //  theme={theme} toggleTheme={toggleTheme}
+        />
       </div>
     </ThemeProvider>
+
+    // </ThemeProvider>
   );
 }
 
