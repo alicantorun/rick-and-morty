@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CharactersListView from "./CharactersListView";
 
 const CharactersListControl = (props: any) => {
-  const { getCharacters, characters } = props;
+  const { getAllCharacters, characters } = props;
   const [page, setPage] = useState(1);
 
   const { data, error, loading } = characters;
@@ -17,7 +17,7 @@ const CharactersListControl = (props: any) => {
   useEffect(() => {
     // const { fetchItems, itemsCurrentPage } = props;
     // fetchItems(itemsCurrentPage);
-    getCharacters(page);
+    getAllCharacters(page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 

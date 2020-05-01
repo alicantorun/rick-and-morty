@@ -24,7 +24,7 @@ const ExampleView = (
           props.itemsPaged.map((character: any) => {
             const { image, id, gender, name, species, status } = character;
             return (
-              <Cell>
+              <Cell key={id}>
                 <CharacterCard
                   image={image}
                   id={id}
