@@ -1,12 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
-// TODO CHANGE
+// TODO
 const colorPalette = {
   lightShades: "242, 242, 241",
+  lightPaperShades: "200, 200, 200",
   lightAccent: "139, 142, 149",
   mainBrand: "140, 100, 88",
   darkAccent: "133, 129, 137",
   darkShades: "32, 30, 32",
+  darkPaperShades: "10, 10, 10",
 
   success: "95, 153, 81",
   warning: "221, 136, 25",
@@ -39,6 +41,7 @@ export const darkTheme = {
   gradient: "linear-gradient(#091236, #1E215D)",
   global: {
     bg: colorPalette.darkShades,
+    paper: colorPalette.darkPaperShades,
     color: colorPalette.lightShades,
     link: colorPalette.mainBrand,
     linkHover: colorPalette.lightAccent,
@@ -55,6 +58,7 @@ export const lightTheme = {
   gradient: "linear-gradient(#39598A, #79D7ED)",
   global: {
     bg: colorPalette.lightShades,
+    paper: colorPalette.lightPaperShades,
     color: colorPalette.darkShades,
     link: colorPalette.mainBrand,
     linkHover: colorPalette.darkAccent,

@@ -1,33 +1,33 @@
-import React from "react";
-// import { ThemeProvider } from "styled-components";
-// import { darkTheme, lightTheme } from "./theme/theme";
-// import { useDarkMode } from "./hooks/useDarkMode";
+import React, { useEffect } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
+import { Route, Switch } from "react-router-dom";
+
+import * as ROUTES from "./constants/routes";
+
+import Characters from "./pages/Characters";
+
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
-// import { GlobalStyle } from "./theme/theme";
 import ThemeProvider from "./ThemeProvider";
+import store from "./store";
+import List from "./List";
 
 function App() {
-  // const [theme, toggleTheme, componentMounted] = useDarkMode();
-
-  // const themeMode = theme === "light" ? lightTheme : darkTheme;
-
-  // if (!componentMounted) {
-  //   return <div />;
-  // }
-
-  console.log("render");
   return (
-    // <ThemeProvider theme={themeMode}>
-    //   <GlobalStyle />
-    <ThemeProvider>
-      <div>
-        <ThemeSwitcher
-        //  theme={theme} toggleTheme={toggleTheme}
-        />
-      </div>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <BrowserRouter>
+          <ThemeSwitcher />
+          <Switch>
+            {/* <Route exact path={ROUTES.HOME} component={Home} /> */}
+            <Route exact path={ROUTES.CHARACTERS_LIST} component={Characters} />
 
-    // </ThemeProvider>
+            {/* <List /> */}
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
