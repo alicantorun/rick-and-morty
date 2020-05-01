@@ -11,7 +11,6 @@ import Characters from "./pages/Characters";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import ThemeProvider from "./ThemeProvider";
 import store from "./store";
-import List from "./List";
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
           <ThemeSwitcher />
           <Switch>
             {/* <Route exact path={ROUTES.HOME} component={Home} /> */}
-            <Route exact path={ROUTES.CHARACTERS_LIST} component={Characters} />
+            <Route path={ROUTES.CHARACTERS_LIST} component={Characters} />
 
             {/* <List /> */}
           </Switch>

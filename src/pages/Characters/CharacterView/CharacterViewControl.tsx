@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import CharactersListView from "./CharactersListView";
+import CharacterViewView from "./CharacterViewView";
+import { useParams } from "react-router-dom";
 
-const CharactersListControl = (props: any) => {
-  const { getCharacters, characters } = props;
+const CharacterViewControl = (props: any) => {
+  let { id } = useParams();
+
+  const { getCharacter, character } = props;
   const [page, setPage] = useState(1);
 
-  const { data, error, loading } = characters;
+  const { data, error, loading } = character;
 
   //   useEffect(() => {
   //     // const { fetchItems, itemsCurrentPage } = props;
@@ -17,9 +20,9 @@ const CharactersListControl = (props: any) => {
   useEffect(() => {
     // const { fetchItems, itemsCurrentPage } = props;
     // fetchItems(itemsCurrentPage);
-    getCharacters(page);
+    getCharacter(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
+  }, [id]);
 
   //   console.log("Character List Control Props: ", characters);
 
@@ -60,10 +63,10 @@ const CharactersListControl = (props: any) => {
   //   if (itemsErrored) return <div>Errored</div>;
 
   return (
-    <CharactersListView
+    <CharacterViewView
       onNext={handleNext}
       onPrevious={handlePrevious}
-      itemsPaged={data && data.results}
+      itemsPaged={data && data}
       itemsCurrentPage={page}
       itemsLastPage={data && data.info && data.info.pages}
       pageCount={data && data.info && data.info.pages}
@@ -72,4 +75,4 @@ const CharactersListControl = (props: any) => {
   );
 };
 
-export default CharactersListControl;
+export default CharacterViewControl;

@@ -7,22 +7,42 @@ import {
   Header,
   Title,
 } from "./CharacterCard.styles";
+import { useHistory } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
 
-function CharacterCard({
-  image = "https://rickandmortyapi.com/api/character/avatar/47.jpeg",
-  species = "test",
-  status = "test",
-  lastLocation = "test",
-  gender = "test",
-  origin = "test",
-  name = "test",
-  id = "0",
-  created = "test years",
-}) {
+interface Props {
+  image?: string;
+  species?: string;
+  status?: string;
+  lastLocation?: string;
+  gender?: string;
+  origin?: string;
+  name?: string;
+  id?: string;
+  created?: string;
+}
+
+const CharacterCard: React.FC<Props> = ({
+  image,
+  species,
+  status,
+  lastLocation,
+  gender,
+  origin,
+  name,
+  id,
+  created,
+}) => {
+  let history = useHistory();
+  function handleViewCharacterClick() {
+    history.push({
+      pathname: `${ROUTES.CHARACTERS_LIST}/${id}`,
+    });
+  }
   return (
     <Wrapper>
       <Header>
-        <Image src={image} />
+        <Image src={image} onClick={handleViewCharacterClick} />
         <Title>
           <h2>{name}</h2>
           <p>
@@ -54,6 +74,6 @@ function CharacterCard({
       </Body>
     </Wrapper>
   );
-}
+};
 
 export default CharacterCard;

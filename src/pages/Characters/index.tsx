@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { Route } from "react-router-dom";
 
 import CharactersList from "./CharactersList";
+import CharacterView from "./CharacterView";
 // const CharactersView = lazy(() => import("./CharactersView"));
 
 function Characters(props: any) {
@@ -14,11 +15,11 @@ function Characters(props: any) {
 
   return (
     <>
-      {/* <Route
+      <Route
         exact
         path={routes.view}
-        render={(props) => <CharactersView routes={routes} {...props} />}
-      /> */}
+        render={(props) => <CharacterView routes={routes} {...props} />}
+      />
       <Route
         exact
         path={routes.list}

@@ -16,26 +16,22 @@ const ExampleView = (
   props: any
 ) => {
   console.log("Character List View Props: ", props);
+  const { image, id, gender, name, species, status } =
+    props.itemsPaged && props.itemsPaged;
 
   return (
     <Container>
       <Grid columns={3} gap="20px">
-        {props.itemsPaged &&
-          props.itemsPaged.map((character: any) => {
-            const { image, id, gender, name, species, status } = character;
-            return (
-              <Cell>
-                <CharacterCard
-                  image={image}
-                  id={id}
-                  gender={gender}
-                  name={name}
-                  species={species}
-                  status={status}
-                />
-              </Cell>
-            );
-          })}
+        <Cell>
+          <CharacterCard
+            image={image}
+            id={id}
+            gender={gender}
+            name={name}
+            species={species}
+            status={status}
+          />
+        </Cell>
       </Grid>
       {/* {props.itemsCurrentPage !== 1 && (
         <button onClick={props.onPrevious} className="button">
