@@ -18,12 +18,12 @@ function Characters(props: any) {
       <Route
         exact
         path={routes.view}
-        render={(props) => <CharacterView routes={routes} {...props} />}
+        render={(props) => <CharacterView {...props} />}
       />
       <Route
         exact
         path={routes.list}
-        render={(props) => <CharactersList routes={routes} {...props} />}
+        render={(props) => <CharactersList {...props} />}
       />
     </>
   );

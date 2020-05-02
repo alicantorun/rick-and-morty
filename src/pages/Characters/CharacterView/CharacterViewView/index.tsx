@@ -33,20 +33,6 @@ const ExampleView = (
           />
         </Cell>
       </Grid>
-      {/* {props.itemsCurrentPage !== 1 && (
-        <button onClick={props.onPrevious} className="button">
-          Previous
-        </button>
-      )}
-      {props.itemsCurrentPage !== props.itemsLastPage && (
-        <button onClick={props.onNext} className="button">
-          Next
-        </button>
-      )} */}
-      <Pagination
-        pageCount={props.pageCount}
-        onPageChange={props.handlePageClick}
-      />
     </Container>
   );
 };

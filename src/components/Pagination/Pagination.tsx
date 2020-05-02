@@ -3,14 +3,13 @@ import { Wrapper } from "./Pagination.styles";
 
 import ReactPaginate from "react-paginate";
 
-const Pagination = ({ pageCount, onPageChange }: any) => {
+const Pagination = ({ pageCount, pageNumber, onPageChange }: any) => {
   return (
     <Wrapper>
       <ReactPaginate
         previousLabel={"← Previous"}
         nextLabel={"Next →"}
         breakLabel={<span className="gap">...</span>}
-        // breakClassName={"break-me"}
         pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
@@ -23,6 +22,7 @@ const Pagination = ({ pageCount, onPageChange }: any) => {
         nextClassName={"next"}
         previousClassName={"previous"}
         pageLinkClassName={"pageLink"}
+        forcePage={pageNumber - 1}
 
         // subContainerClassName={"pages pagination"}
         // activeClassName={"active"}
