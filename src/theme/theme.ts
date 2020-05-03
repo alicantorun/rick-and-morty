@@ -5,7 +5,7 @@ const colorPalette = {
   lightShades: "242, 242, 241",
   lightPaperShades: "200, 200, 200",
   lightAccent: "139, 142, 149",
-  mainBrand: "140, 100, 88",
+  mainBrand: "0, 170, 5",
   darkAccent: "133, 129, 137",
   darkShades: "32, 30, 32",
   darkPaperShades: "10, 10, 10",

@@ -36,7 +36,7 @@ const CharacterCard: React.FC<Props> = ({
   let history = useHistory();
   function handleViewCharacterClick() {
     history.push({
-      pathname: `${ROUTES.CHARACTERS_LIST}/${id}`,
+      pathname: `${ROUTES.CHARACTER_LIST}/${id}`,
     });
   }
   return (

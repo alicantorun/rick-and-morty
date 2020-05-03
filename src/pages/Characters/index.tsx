@@ -1,8 +1,8 @@
-import React, { lazy } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 
-import CharactersList from "./CharactersList";
-import CharacterView from "./CharacterView";
+import CharacterList from "./CharacterList";
+import CharacterView from "./Character";
 // const CharactersView = lazy(() => import("./CharactersView"));
 
 function Characters(props: any) {
@@ -23,7 +23,7 @@ function Characters(props: any) {
       <Route
         exact
         path={routes.list}
-        render={(props) => <CharactersList {...props} />}
+        render={(props) => <CharacterList {...props} />}
       />
     </>
   );

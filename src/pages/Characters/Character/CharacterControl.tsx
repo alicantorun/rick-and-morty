@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import CharacterViewView from "./CharacterViewView";
+import CharacterView from "./CharacterView";
 import { useParams } from "react-router-dom";
 
-const CharacterViewControl = (props: any) => {
+const CharacterControl = (props: any) => {
   let { id } = useParams();
 
   const { getCharacter, character } = props;
@@ -63,7 +63,7 @@ const CharacterViewControl = (props: any) => {
   //   if (itemsErrored) return <div>Errored</div>;
 
   return (
-    <CharacterViewView
+    <CharacterView
       onNext={handleNext}
       onPrevious={handlePrevious}
       itemsPaged={data && data}
@@ -75,4 +75,4 @@ const CharacterViewControl = (props: any) => {
   );
 };
 
-export default CharacterViewControl;
+export default CharacterControl;

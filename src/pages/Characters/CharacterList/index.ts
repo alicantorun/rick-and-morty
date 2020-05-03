@@ -5,7 +5,7 @@ import getVisibleCharacters from "../../../selectors/characters";
 import { Creators as CharactersCreators } from "../../../store/ducks/characters";
 import { Creators as FiltersCreators } from "../../../store/ducks/filters";
 
-import CharactersListControl from "./CharactersListControl";
+import CharacterListControl from "./CharacterListControl";
 
 const mapDispatchToProps = (dispatch: any) =>
   bindActionCreators<any, any>(
@@ -20,4 +20,4 @@ const mapStateToProps = (state: any) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CharactersListControl);
+)(CharacterListControl);

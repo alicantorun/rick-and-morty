@@ -1,5 +1,5 @@
 import React from "react";
-// import "./styles.css";
+import { RowWrapper } from "./styles";
 import FilterByStatus from "../../../../components/FilterByStatus/FilterByStatus";
 import CharacterCard from "../../../../components/CharacterCard/CharacterCard";
 import FilterByDate from "../../../../components/FilterByDate/FilterByDate";
@@ -12,6 +12,7 @@ import { Grid, Cell } from "styled-css-grid";
 interface Props {
   sortCharactersByName?: any;
   onHandleResetFilters?: any;
+  onHandleSetPaginatedApi?: any;
   handlePageClick?: any;
   filterByStatus?: any;
   statusFilter?: any;
@@ -20,7 +21,6 @@ interface Props {
   orderFilter?: any;
   sorterName?: any;
   pageNumber?: any;
-
   itemsPaged?: any;
   pageCount?: any;
   loading?: any;
@@ -30,6 +30,7 @@ interface Props {
 const ExampleView: React.FC<Props> = ({
   sortCharactersByName,
   onHandleResetFilters,
+  onHandleSetPaginatedApi,
   handlePageClick,
   filterByStatus,
   statusFilter,
@@ -38,18 +39,24 @@ const ExampleView: React.FC<Props> = ({
   orderFilter,
   pageNumber,
   itemsPaged,
-
   pageCount,
   loading,
   error,
 }) => {
   return (
     <Container>
-      <SortByName sortCharactersByName={sortCharactersByName} />
-      <FilterByStatus filterByStatus={filterByStatus} />
-      <FilterByName filterByName={filterByName} />
-      <FilterByDate filterByDate={filterByDate} />
-      <button onClick={onHandleResetFilters}>Reset Filter</button>
+      <div>
+        <RowWrapper>
+          <SortByName sortCharactersByName={sortCharactersByName} />
+          <FilterByStatus filterByStatus={filterByStatus} />
+          <FilterByName filterByName={filterByName} />
+        </RowWrapper>
+        <RowWrapper>
+          <FilterByDate filterByDate={filterByDate} />
+          <button onClick={onHandleResetFilters}>Reset Filter</button>
+          <button onClick={onHandleSetPaginatedApi}>Use Paginated Api</button>
+        </RowWrapper>
+      </div>
       {loading && !error && <div>LOADING</div>}
       {!loading && error && <div>ERROR</div>}
       {!loading && !error && (

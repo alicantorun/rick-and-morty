@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CharactersListView from "./CharactersListView";
+import CharacterListView from "./CharacterListView";
 
 const CharactersListControl = (props: any) => {
   console.log(props);
@@ -57,6 +57,9 @@ const CharactersListControl = (props: any) => {
     setPage(1);
     clear();
   };
+  const handleSetPaginatedApi = () => {
+    setFetchPageinatedApi(!fetchPageinatedApi);
+  };
 
   let filteredItems =
     characters && characters.data && characters.data.filteredCharacters;
@@ -69,10 +72,11 @@ const CharactersListControl = (props: any) => {
 
   return (
     <>
-      <CharactersListView
+      <CharacterListView
         itemsPaged={fetchPageinatedApi ? data && data.results : renderItems}
         sortCharactersByName={handleSortCharactersByName}
         onHandleResetFilters={handleResetFilters}
+        onHandleSetPaginatedApi={handleSetPaginatedApi}
         handlePageClick={handlePageClick}
         filterByStatus={handleTypeFilter}
         filterByDate={handleDateFilter}

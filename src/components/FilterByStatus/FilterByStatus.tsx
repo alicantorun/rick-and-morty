@@ -2,7 +2,9 @@ import React from "react";
 
 function FilterByStatus(props: any) {
   return (
-    <div style={{ width: "100%", margin: 10 }}>
+    <div
+    // style={{ width: "100%", margin: 10 }}
+    >
       <select value={props.statusFilter} onChange={props.filterByStatus}>
         <option value="">Filter by Status</option>
 

@@ -2,7 +2,9 @@ import React from "react";
 
 function SortByName(props: any) {
   return (
-    <div style={{ width: "100%", margin: 10 }}>
+    <div
+    // style={{ width: "100%", margin: 10 }}
+    >
       <select onChange={props.sortCharactersByName} value={props.orderFilter}>
         <option value="">Sort by</option>
 
