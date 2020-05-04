@@ -1,4 +1,18 @@
-const filtersReducerDefaultState = {
+export interface FilterState {
+  name: string;
+  status: string;
+  sortBy: string;
+  dates: Array<string>;
+}
+
+export type FilterActionType =
+  | { type: "FILTER_NAME"; name: string }
+  | { type: "FILTER_STATUS"; status: string }
+  | { type: "FILTER_DATES"; dates: Array<string> }
+  | { type: "SORT_BY"; sortType: string }
+  | { type: "CLEAR"; defaultFilter: FilterState };
+
+export const FILTER_INITIAL_STATE: FilterState = {
   name: "",
   status: "",
   sortBy: "",
@@ -28,10 +42,10 @@ export const Creators = {
 
   clear: () => ({
     type: "CLEAR",
-    defaultFilter: filtersReducerDefaultState,
+    defaultFilter: FILTER_INITIAL_STATE,
   }),
 
-  filtersReducerDefaultState: {
+  FILTER_INITIAL_STATE: {
     name: "",
     status: "",
     sortBy: "",
@@ -39,7 +53,10 @@ export const Creators = {
   },
 };
 
-const filtersReducer = (state = filtersReducerDefaultState, action: any) => {
+const filtersReducer = (
+  state = FILTER_INITIAL_STATE,
+  action: FilterActionType
+) => {
   switch (action.type) {
     case "FILTER_NAME":
       return {

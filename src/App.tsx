@@ -8,6 +8,7 @@ import * as ROUTES from "./constants/routes";
 
 import Characters from "./pages/Characters";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 import ThemeProvider from "./ThemeProvider";
 import store from "./store";
@@ -22,6 +23,7 @@ function App() {
           <Switch>
             <Route exact path={ROUTES.HOME} component={Home} />
             <Route path={ROUTES.CHARACTER_LIST} component={Characters} />
+            <Route component={NotFound} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>

@@ -10,15 +10,25 @@ import {
 import { useHistory } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
 import { daysBetween } from "../../utils";
+
+interface LocationProps {
+  name?: string;
+  url?: string;
+}
+interface OriginProps {
+  name?: string;
+  url?: string;
+}
+
 interface Props {
   created?: string;
   species?: string;
   status?: string;
   gender?: string;
-  location?: any;
+  location?: LocationProps;
   image?: string;
   name?: string;
-  origin?: any;
+  origin?: OriginProps;
   id?: string;
 }
 
@@ -33,6 +43,8 @@ const CharacterCard: React.FC<Props> = ({
   name,
   id,
 }) => {
+  const locationName = location && location.name;
+  const originName = origin && origin.name;
   let history = useHistory();
   function handleViewCharacterClick() {
     history.push({
@@ -62,7 +74,7 @@ const CharacterCard: React.FC<Props> = ({
         </TextWrapper>
         <TextWrapper>
           <span>Location:</span>
-          <span>{location && location.name}</span>
+          <span>{locationName}</span>
         </TextWrapper>
         <TextWrapper>
           <span>Gender:</span>
@@ -70,7 +82,7 @@ const CharacterCard: React.FC<Props> = ({
         </TextWrapper>
         <TextWrapper>
           <span>Origin:</span>
-          <span>{origin && origin.name}</span>
+          <span>{originName}</span>
         </TextWrapper>
       </Body>
     </Wrapper>

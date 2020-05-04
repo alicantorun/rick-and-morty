@@ -1,16 +1,21 @@
 export const Types = {
-  GET_ALL_CHARACTERS_REQUEST: "subject/GET_ALL_CHARACTERS_REQUEST",
-  GET_ALL_CHARACTERS_SUCCESS: "subject/GET_ALL_CHARACTERS_SUCCESS",
-  GET_ALL_CHARACTERS_ERROR: "subject/GET_ALL_CHARACTERS_ERROR",
+  GET_ALL_CHARACTERS_REQUEST: "GET_ALL_CHARACTERS_REQUEST",
+  GET_ALL_CHARACTERS_SUCCESS: "GET_ALL_CHARACTERS_SUCCESS",
+  GET_ALL_CHARACTERS_ERROR: "GET_ALL_CHARACTERS_ERROR",
 };
 
-interface CharactersState {
+export interface CharactersState {
   loading: boolean;
   error: boolean;
   data: [];
 }
 
-const INITIAL_STATE: CharactersState = {
+export type CharactersActionType =
+  | { type: "GET_ALL_CHARACTERS_REQUEST"; payload: any }
+  | { type: "GET_ALL_CHARACTERS_SUCCESS"; payload: any }
+  | { type: "GET_ALL_CHARACTERS_ERROR"; payload: any };
+
+export const CHARACTERS_INITIAL_STATE: CharactersState = {
   loading: true,
   error: false,
   data: [],
@@ -32,11 +37,14 @@ export const Creators = {
   }),
 };
 
-const subject = (state = INITIAL_STATE, { type, payload }: any) => {
+const charactersReducer = (
+  state = CHARACTERS_INITIAL_STATE,
+  { type, payload }: CharactersActionType
+) => {
   switch (type) {
     case Types.GET_ALL_CHARACTERS_REQUEST:
       return {
-        ...INITIAL_STATE,
+        ...CHARACTERS_INITIAL_STATE,
       };
 
     case Types.GET_ALL_CHARACTERS_SUCCESS:
@@ -58,4 +66,4 @@ const subject = (state = INITIAL_STATE, { type, payload }: any) => {
   }
 };
 
-export default subject;
+export default charactersReducer;

@@ -1,12 +1,11 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, RouteComponentProps } from "react-router-dom";
 
 import CharacterList from "./CharacterList";
 import Character from "./Character";
 // const CharactersView = lazy(() => import("./CharactersView"));
 
-function Characters(props: any) {
-  const { match } = props;
+function Characters({ match }: RouteComponentProps) {
   const { path } = match;
   const routes = {
     view: `${path}/:id`,
