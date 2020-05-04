@@ -68,20 +68,42 @@ export const lightTheme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', Helvetica, sans-serif;
-    color: hsla(0, 0%, 0%, 0.8);
-    font-weight: normal;
-    word-wrap: break-word;
-    font-kerning: normal;
-    -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    background-color: rgb(${(props) => props.theme.global.bg});
-    color: rgb(${(props) => props.theme.global.color});
-    transition: background 0.2s ease-out;
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gnD_vx3rCs.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  font-family: 'Montserrat', "Open Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: hsla(0, 0%, 0%, 0.8);
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  background-color: rgb(${(props) => props.theme.global.bg});
+  color: rgb(${(props) => props.theme.global.color});
+  transition: background 0.2s ease-out;
+
+  button, input, select {
+    font-size: 16px;
   }
-`;
+
+  span {
+    font-size: 13px;
+  }
+  h2{
+    font-size: 18px;
+  }
+}`;

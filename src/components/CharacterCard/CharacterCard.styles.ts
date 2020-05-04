@@ -27,6 +27,10 @@ export const Title = styled.div`
   p {
     margin-bottom: 5px;
   }
+
+  h2 {
+    margin-top: 5px;
+  }
   bottom: 0;
   width: 100%;
   opacity: 0.9;

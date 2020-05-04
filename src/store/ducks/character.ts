@@ -10,6 +10,11 @@ export interface CharacterState {
   data: {};
 }
 
+export type CharacterActionType =
+  | { type: "GET_ALL_CHARACTER_REQUEST"; payload: any }
+  | { type: "GET_ALL_CHARACTER_SUCCESS"; payload: any }
+  | { type: "GET_ALL_CHARACTER_ERROR"; payload: any };
+
 export const CHARACTER_INITIAL_STATE: CharacterState = {
   loading: true,
   error: false,

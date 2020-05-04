@@ -3,19 +3,21 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   margin-top: 20px;
   ul {
+    padding: 0;
     list-style: none;
     user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
   }
 
   .next {
-    margin-left: 16px;
+    margin-left: 10px;
   }
 
   .previous {
-    margin-right: 16px;
+    margin-right: 10px;
   }
 
   .nextPage {
@@ -39,11 +41,11 @@ export const Wrapper = styled.div`
   }
 
   .pageLink {
-    padding: 16px;
+    padding: 10px;
     outline: none;
     cursor: pointer;
-    width: 40;
-    height: 40;
+    width: 30;
+    height: 30;
     border-radius: 50%;
     display: block;
     text-align: center;

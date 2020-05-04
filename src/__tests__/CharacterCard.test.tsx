@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, shallow } from "enzyme";
+import { shallow } from "enzyme";
 import CharacterCard from "../components/CharacterCard/CharacterCard";
 import {
   Header,
@@ -7,10 +7,8 @@ import {
   TextWrapper,
   Wrapper,
   Image,
-  Title,
 } from "../components/CharacterCard/CharacterCard.styles";
 import { darkTheme } from "../theme/theme";
-import { shallowWithTheme, mountWithTheme } from "../__mocks__/ThemeProvider";
 import { ThemeProvider } from "styled-components";
 
 import sinon from "sinon";
@@ -44,13 +42,6 @@ describe("CharacterCard Tests", () => {
     expect(wrapper.find(Body)).toHaveLength(1);
     expect(wrapper.find(TextWrapper)).toHaveLength(5);
   });
-
-  // it("It should simulate a click event", () => {
-  //   const onClick = sinon.spy();
-  //   const wrapper = shallowWithTheme(<Wrapper onClick={onClick} />);
-  //   wrapper.find("div").simulate("click");
-  //   expect(onClick).toHaveProperty("callCount", 1);
-  // });
 
   it("simulates click event", () => {
     const onClick = sinon.spy();

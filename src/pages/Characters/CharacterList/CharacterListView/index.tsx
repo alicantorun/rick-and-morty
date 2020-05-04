@@ -11,7 +11,6 @@ import Container from "../../../../components/Container";
 import { Grid, Cell } from "styled-css-grid";
 
 interface Props {
-  onHandleSetPaginatedApi?: any;
   sortCharactersByName?: any;
   onHandleResetFilters?: any;
   handlePageClick?: any;
