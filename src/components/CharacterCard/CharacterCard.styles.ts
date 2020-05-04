@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 320px;
+  width: 100%;
   height: 100%;
   border-radius: 10px;
   transition: all 600ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
@@ -13,9 +13,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Image = styled.img`
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  width: 320px;
 `;
 
 export const Title = styled.div`
@@ -29,7 +31,7 @@ export const Title = styled.div`
   }
 
   h2 {
-    margin-top: 5px;
+    margin-top: 0;
   }
   bottom: 0;
   width: 100%;
@@ -40,7 +42,7 @@ export const Title = styled.div`
 
 export const Header = styled.div`
   position: relative;
-  width: 320px;
+  width: 100%;
   height: 320px;
 `;
 
@@ -57,4 +59,17 @@ export const TextWrapper = styled.div`
   > span {
     white-space: nowrap;
   }
+`;
+
+export const Button = styled.button`
+  margin-top: 20px;
+  width: 200px;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: rgb(${(props) => props.theme.palette.mainBrand});
+  border: none;
+  a {
+    color: ${(props) => props.theme.global.color};
+  }
+  cursor: pointer;
 `;

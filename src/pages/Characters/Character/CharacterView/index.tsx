@@ -1,12 +1,14 @@
 import React from "react";
 
 import CharacterCard from "../../../../components/CharacterCard/CharacterCard";
-import { EpisodesWrapper, HeaderWrapper } from "./styles";
+import { EpisodesWrapper, HeaderWrapper, Button } from "./styles";
 import Container from "../../../../components/Container";
 import { Grid, Cell } from "styled-css-grid";
+import { useHistory } from "react-router-dom";
 
 const ExampleView = (props: any) => {
   const { loading, data, error } = props;
+  let history = useHistory();
 
   const {
     location,
@@ -20,8 +22,12 @@ const ExampleView = (props: any) => {
     id,
   } = data;
 
+  function handleGoBack() {
+    history.goBack();
+  }
+
   return (
-    <Container style={{ marginTop: "20px" }}>
+    <Container style={{ marginTop: "20px", marginBottom: "20px;" }}>
       {loading && !error && <div>LOADING</div>}
       {!loading && error && <div>ERROR</div>}
       {!loading && !error && (
@@ -38,42 +44,19 @@ const ExampleView = (props: any) => {
               id={id}
             />
           </Cell>
-          <Cell width={2}>
-            <Grid
-              columns={"1f 1fr"}
-              rows={"60px 1fr"}
-              areas={["header ", "contentleft "]}
-            >
-              <Cell area="header">
-                <HeaderWrapper>
-                  <h1>Episodes List</h1>
-                </HeaderWrapper>
-              </Cell>
-              <Cell area="contentleft">
-                <EpisodesWrapper>
-                  <Grid
-                    columns="repeat(auto-fit, minmax(300px, 1fr))"
-                    gap="20px"
-                  >
-                    <Cell>
-                      <ul style={{ width: "100%", marginTop: "20px" }}>
-                        {episode &&
-                          episode.slice(0, 15).map((i: any) => <li>{i}</li>)}
-                      </ul>
-                    </Cell>
-                    <Cell>
-                      <ul style={{ width: "100%", marginTop: "20px" }}>
-                        {episode &&
-                          episode.slice(15).map((i: any) => <li>{i}</li>)}
-                      </ul>
-                    </Cell>
-                  </Grid>
-                </EpisodesWrapper>
-              </Cell>
-            </Grid>
+          <Cell>
+            <HeaderWrapper>
+              <h1>Episodes List</h1>
+            </HeaderWrapper>
+            <EpisodesWrapper>
+              <ul style={{ width: "100%", marginTop: "20px" }}>
+                {episode && episode.map((i: any) => <li>{i}</li>)}
+              </ul>
+            </EpisodesWrapper>
           </Cell>
         </Grid>
       )}
+      <Button onClick={handleGoBack}>Go Back</Button>
     </Container>
   );
 };
