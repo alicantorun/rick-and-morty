@@ -12,7 +12,7 @@ const Pagination = ({ pageCount, pageNumber, onPageChange }: any) => {
         breakLabel={<span className="gap">...</span>}
         pageCount={pageCount}
         marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
         onPageChange={onPageChange}
         containerClassName={"pagination"}
         previousLinkClassName={"previousPage"}

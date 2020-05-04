@@ -1,83 +1,129 @@
 import React from "react";
-import { RowWrapper } from "./styles";
+import { Button } from "./styles";
 import FilterByStatus from "../../../../components/FilterByStatus/FilterByStatus";
 import CharacterCard from "../../../../components/CharacterCard/CharacterCard";
 import FilterByDate from "../../../../components/FilterByDate/FilterByDate";
 import FilterByName from "../../../../components/FilterByName/FilterByName";
 import Pagination from "../../../../components/Pagination/Pagination";
 import SortByName from "../../../../components/SortByName/SortByName";
+import useWindowSize from "../../../../hooks/useWindowSize";
 import Container from "../../../../components/Container";
 import { Grid, Cell } from "styled-css-grid";
 
 interface Props {
+  onHandleSetPaginatedApi?: any;
   sortCharactersByName?: any;
   onHandleResetFilters?: any;
-  onHandleSetPaginatedApi?: any;
   handlePageClick?: any;
   filterByStatus?: any;
   statusFilter?: any;
   filterByDate?: any;
   filterByName?: any;
   orderFilter?: any;
+  sortFilter?: any;
   sorterName?: any;
+  nameFilter?: any;
+  dateFilter?: any;
   pageNumber?: any;
-  itemsPaged?: any;
   pageCount?: any;
   loading?: any;
+  reload?: any;
   error?: any;
+  data?: any;
 }
 
 const ExampleView: React.FC<Props> = ({
   sortCharactersByName,
   onHandleResetFilters,
-  onHandleSetPaginatedApi,
   handlePageClick,
   filterByStatus,
   statusFilter,
-  filterByDate,
   filterByName,
-  orderFilter,
+  filterByDate,
+  nameFilter,
+  sortFilter,
+  dateFilter,
   pageNumber,
-  itemsPaged,
   pageCount,
   loading,
+  reload,
   error,
+  data,
 }) => {
+  const size = useWindowSize();
+
   return (
     <Container>
-      <div>
-        <RowWrapper>
-          <SortByName sortCharactersByName={sortCharactersByName} />
-          <FilterByStatus filterByStatus={filterByStatus} />
-          <FilterByName filterByName={filterByName} />
-        </RowWrapper>
-        <RowWrapper>
-          <FilterByDate filterByDate={filterByDate} />
-          <button onClick={onHandleResetFilters}>Reset Filter</button>
-          <button onClick={onHandleSetPaginatedApi}>Use Paginated Api</button>
-        </RowWrapper>
+      <div style={{ marginBottom: "20px", marginTop: "20px" }}>
+        <Grid gap="10px" columns="repeat(auto-fit, minmax(300px, 1fr))">
+          <Cell>
+            <FilterByDate
+              reload={reload}
+              dateFilter={dateFilter}
+              filterByDate={filterByDate}
+            />
+          </Cell>
+          <Cell>
+            <SortByName
+              sortCharactersByName={sortCharactersByName}
+              sortFilter={sortFilter}
+            />
+          </Cell>
+          <Cell>
+            <FilterByStatus
+              filterByStatus={filterByStatus}
+              statusFilter={statusFilter}
+            />
+          </Cell>
+          <Cell>
+            <FilterByName nameFilter={nameFilter} filterByName={filterByName} />
+          </Cell>
+          <Cell width={size && size.width && size.width > 677 ? 2 : 1}>
+            <Button onClick={onHandleResetFilters}>Reset Filter</Button>
+          </Cell>
+        </Grid>
       </div>
       {loading && !error && <div>LOADING</div>}
       {!loading && error && <div>ERROR</div>}
       {!loading && !error && (
         <>
           <Grid gap="20px" columns="repeat(auto-fit,minmax(300px,1fr))">
-            {itemsPaged &&
-              itemsPaged.map((character: any) => {
-                const { image, id, gender, name, species, status } = character;
-                return (
-                  <Cell key={id}>
-                    <CharacterCard
-                      species={species}
-                      gender={gender}
-                      status={status}
-                      image={image}
-                      name={name}
-                      id={id}
-                    />
-                  </Cell>
-                );
-              })}
+            {data.map((character: any) => {
+              const {
+                location,
+                created,
+                species,
+                gender,
+                status,
+                origin,
+                image,
+                name,
+                id,
+              } = character;
+
+              return (
+                <Cell
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    display: "flex",
+                  }}
+                  key={id}
+                >
+                  <CharacterCard
+                    location={location}
+                    created={created}
+                    species={species}
+                    gender={gender}
+                    origin={origin}
+                    status={status}
+                    image={image}
+                    name={name}
+                    id={id}
+                  />
+                </Cell>
+              );
+            })}
           </Grid>
         </>
       )}

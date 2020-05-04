@@ -5,7 +5,6 @@ import { api } from "../../services/api";
 import { Creators as CharacterCreators } from "../ducks/character";
 
 export function* getCharacter({ characterId }: any) {
-  console.log(characterId);
   try {
     const { data } = yield call(api.get, `/${characterId}`);
 

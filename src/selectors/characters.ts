@@ -26,11 +26,11 @@ const getVisibleCharacters = (
         } else if (sortBy === "descending") {
           return character2.name.localeCompare(character1.name);
         } else {
-          return;
+          return null;
         }
       });
-  characters.data.filteredCharacters = filteredCharacters;
 
+  characters.data.filteredCharacters = filteredCharacters;
   return characters;
 };
 

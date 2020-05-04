@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100vw;
-  height: 100vh;
-  background-color: black;
+  height: calc(100vh - 60px);
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(${(props) => props.theme.global.bg});
 `;
 
 export const Button = styled.button`
@@ -20,6 +20,7 @@ export const Button = styled.button`
   a {
     color: ${(props) => props.theme.global.color};
   }
+  cursor: pointer;
 `;
 
 export const Hero = styled.img`

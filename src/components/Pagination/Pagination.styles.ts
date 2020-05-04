@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  margin-top: 20px;
   ul {
     list-style: none;
     user-select: none;
@@ -23,7 +24,7 @@ export const Wrapper = styled.div`
     cursor: pointer;
     border-radius: 4;
     &:hover {
-      background: palevioletred;
+      background-color: rgb(${(props) => props.theme.palette.mainBrand});
     }
   }
 
@@ -33,12 +34,11 @@ export const Wrapper = styled.div`
     cursor: pointer;
     border-radius: 4;
     &:hover {
-      background: palevioletred;
+      background-color: rgb(${(props) => props.theme.palette.mainBrand});
     }
   }
 
   .pageLink {
-    color: red;
     padding: 16px;
     outline: none;
     cursor: pointer;
@@ -48,26 +48,17 @@ export const Wrapper = styled.div`
     display: block;
     text-align: center;
     &:hover {
-      background-color: yellow;
-      color: red;
+      background-color: rgb(${(props) => props.theme.palette.mainBrand});
+      color: rgb(${(props) => props.theme.global.contrastColor});
     }
   }
 
   .active {
-    background-color: yellow;
-    color: blue;
+    background-color: rgb(${(props) => props.theme.palette.mainBrand});
+    color: rgb(${(props) => props.theme.global.contrastColor}) !important;
+    a > {
+      background-color: rgb(${(props) => props.theme.palette.mainBrand});
+      color: rgb(${(props) => props.theme.global.contrastColor}) !important;
+    }
   }
 `;
-
-// width: 300px;
-
-// border-radius: 10px;
-// border: 2px solid red;
-
-// transition: all 600ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
-
-// background-color: rgb(${(props) => props.theme.global.paper});
-
-// a {
-//   color: ${(props) => props.theme.global.color};
-// }

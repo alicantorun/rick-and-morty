@@ -1,37 +1,37 @@
 import React from "react";
 import {
-  Wrapper,
-  Image,
-  Body,
   TextWrapper,
+  Wrapper,
   Header,
   Title,
+  Image,
+  Body,
 } from "./CharacterCard.styles";
 import { useHistory } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-
+import { daysBetween } from "../../utils";
 interface Props {
-  image?: string;
+  created?: string;
   species?: string;
   status?: string;
-  lastLocation?: string;
   gender?: string;
-  origin?: string;
+  location?: any;
+  image?: string;
   name?: string;
+  origin?: any;
   id?: string;
-  created?: string;
 }
 
 const CharacterCard: React.FC<Props> = ({
-  image,
+  location,
   species,
+  created,
   status,
-  lastLocation,
   gender,
   origin,
+  image,
   name,
   id,
-  created,
 }) => {
   let history = useHistory();
   function handleViewCharacterClick() {
@@ -39,37 +39,38 @@ const CharacterCard: React.FC<Props> = ({
       pathname: `${ROUTES.CHARACTER_LIST}/${id}`,
     });
   }
+
   return (
-    <Wrapper>
+    <Wrapper onClick={handleViewCharacterClick}>
       <Header>
-        <Image src={image} onClick={handleViewCharacterClick} />
+        <Image src={image} />
         <Title>
           <h2>{name}</h2>
           <p>
-            id: {id} - created {created} ago
+            id: {id} - created {daysBetween(created)} days ago
           </p>
         </Title>
       </Header>
       <Body>
         <TextWrapper>
           <span>Species:</span>
-          <p>{species}</p>
+          <span>{species}</span>
         </TextWrapper>
         <TextWrapper>
           <span>Status:</span>
-          <p>{status}</p>
+          <span>{status}</span>
         </TextWrapper>
         <TextWrapper>
-          <span>Last Location:</span>
-          <p>{lastLocation}</p>
+          <span>Location:</span>
+          <span>{location && location.name}</span>
         </TextWrapper>
         <TextWrapper>
           <span>Gender:</span>
-          <p>{gender}</p>
+          <span>{gender}</span>
         </TextWrapper>
         <TextWrapper>
           <span>Origin:</span>
-          <p>{origin}</p>
+          <span>{origin && origin.name}</span>
         </TextWrapper>
       </Body>
     </Wrapper>

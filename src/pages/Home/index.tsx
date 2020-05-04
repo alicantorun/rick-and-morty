@@ -2,7 +2,7 @@ import React from "react";
 import { Wrapper, Button, Headline, Content, Hero } from "./Home.styles";
 import { useHistory } from "react-router-dom";
 import * as ROUTES from "../../constants/routes";
-import HeroImg from "../../assets/hero.jpg";
+import HeroImg from "../../assets/hero.png";
 
 function Home() {
   let history = useHistory();

@@ -1,14 +1,14 @@
 import React from "react";
+import { Input } from "./FilterByName.styles";
 
-function FilterByStatus(props: any) {
+function FilterByName(props: any) {
   return (
-    <div
-    // style={{ width: "100%", margin: 10 }}
-    >
-      <label>Search: </label>
-      <input value={props.nameFilter} onChange={props.filterByName}></input>
-    </div>
+    <Input
+      placeholder="Search..."
+      value={props.nameFilter}
+      onChange={props.filterByName}
+    />
   );
 }
 
-export default FilterByStatus;
+export default FilterByName;

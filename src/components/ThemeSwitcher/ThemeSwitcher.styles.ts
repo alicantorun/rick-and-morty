@@ -12,14 +12,9 @@ export const ToggleContainer = styled.button<ToggleContainerProps>`
   display: flex;
   font-size: 0.5rem;
   justify-content: space-between;
-  margin: 0 auto;
   overflow: hidden;
-  padding: 0.5rem;
-  position: relative;
+  padding: 5px;
   width: 4rem;
-  position: absolute;
-  right: 20px;
-  top: 20px;
 
   svg {
     height: auto;

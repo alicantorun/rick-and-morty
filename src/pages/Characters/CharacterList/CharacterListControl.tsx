@@ -2,44 +2,34 @@ import React, { useEffect, useState } from "react";
 import CharacterListView from "./CharacterListView";
 
 const CharactersListControl = (props: any) => {
-  console.log(props);
+  const [statusFilter, setStatusFilter] = useState("");
+  const [nameFilter, setNameFilter] = useState("");
+  const [sortFilter, setSortFilter] = useState("");
+  const [dateFilter, setDateFiilter] = useState(0);
   const [reload, setReload] = useState(0);
-  const [fetchPageinatedApi, setFetchPageinatedApi] = useState(false);
+  const [page, setPage] = useState(1);
 
   const {
     getAllCharacters,
-    getCharacters,
-    characters,
     filterStatus,
     filterDates,
     filterName,
+    characters,
     sortBy,
     clear,
   } = props;
+
   const { data, error, loading } = characters;
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    if (fetchPageinatedApi) {
-      getCharacters(page);
-    } else {
-      getAllCharacters();
-    }
+    getAllCharacters();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fetchPageinatedApi && page]);
-
-  const handlePageClick = (data: any) => {
-    setPage(data.selected + 1);
-  };
+  }, []);
 
   const handleSortCharactersByName = (e: any) => {
-    setReload(reload + 1);
+    setSortFilter(e.target.value);
     sortBy(e.target.value);
-  };
-
-  const handleTypeFilter = (e: any) => {
     setReload(reload + 1);
-    filterStatus(e.target.value);
   };
 
   const handleDateFilter = (value: any) => {
@@ -47,18 +37,30 @@ const CharactersListControl = (props: any) => {
     filterDates(value);
   };
 
-  const handleNameFilter = (e: any) => {
+  const handleStatusFilter = (e: any) => {
+    setStatusFilter(e.target.value);
+    filterStatus(e.target.value);
     setReload(reload + 1);
+  };
+
+  const handleNameFilter = (e: any) => {
+    setNameFilter(e.target.value);
     filterName(e.target.value);
+    setReload(reload + 1);
   };
 
   const handleResetFilters = () => {
+    setDateFiilter(dateFilter + 1);
     setReload(reload + 1);
+    setStatusFilter("");
+    setNameFilter("");
+    setSortFilter("");
     setPage(1);
     clear();
   };
-  const handleSetPaginatedApi = () => {
-    setFetchPageinatedApi(!fetchPageinatedApi);
+
+  const handlePageClick = (data: any) => {
+    setPage(data.selected + 1);
   };
 
   let filteredItems =
@@ -73,22 +75,22 @@ const CharactersListControl = (props: any) => {
   return (
     <>
       <CharacterListView
-        itemsPaged={fetchPageinatedApi ? data && data.results : renderItems}
         sortCharactersByName={handleSortCharactersByName}
         onHandleResetFilters={handleResetFilters}
-        onHandleSetPaginatedApi={handleSetPaginatedApi}
+        filterByStatus={handleStatusFilter}
         handlePageClick={handlePageClick}
-        filterByStatus={handleTypeFilter}
-        filterByDate={handleDateFilter}
         filterByName={handleNameFilter}
-        pageNumber={page}
+        filterByDate={handleDateFilter}
+        pageCount={filteredPageCount}
+        statusFilter={statusFilter}
+        nameFilter={nameFilter}
+        dateFilter={dateFilter}
+        sortFilter={sortFilter}
+        data={renderItems}
         loading={loading}
+        pageNumber={page}
+        reload={reload}
         error={error}
-        pageCount={
-          fetchPageinatedApi
-            ? data && data.info && data.info.pages
-            : filteredPageCount
-        }
       />
     </>
   );

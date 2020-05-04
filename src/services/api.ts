@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const api = axios.create({
-  baseURL: "https://rickandmortyapi.com/api/character",
-});
-
 const apiUrl = "https://rickandmortyapi.com/api/character";
+
+export const api = axios.create({
+  baseURL: apiUrl,
+});
 
 const getCharacters = async function (pageId = 1) {
   let actualUrl = apiUrl + `/?page=${pageId}`;

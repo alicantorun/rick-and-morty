@@ -1,17 +1,7 @@
 import { call, put } from "redux-saga/effects";
 
-import { api, getEntireCharactersList } from "../../services/api";
+import { getEntireCharactersList } from "../../services/api";
 import { Creators as CharactersCreators } from "../ducks/characters";
-
-export function* getCharacters({ pageId }: any) {
-  try {
-    const { data } = yield call(api.get, `/?page=${pageId}`);
-
-    yield put(CharactersCreators.getCharactersSuccess(data));
-  } catch (err) {
-    yield put(CharactersCreators.getCharactersFailure());
-  }
-}
 
 export function* getAllCharacters() {
   try {
