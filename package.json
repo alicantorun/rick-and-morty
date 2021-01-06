@@ -16,7 +16,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/sinon": "^9.0.0",
     "@wojtekmaj/react-daterange-picker": "^3.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "delay": "^4.3.0",
     "react": "^16.13.1",
     "react-datepicker": "^2.14.1",
